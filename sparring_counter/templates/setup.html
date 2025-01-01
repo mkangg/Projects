@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <h1>Sparring Counter</h1>
+        <title>Sparring Counter</title>
+    </head>
+    <body>
+        <form name="setup" action="{{ url_for('setup') }}" method="POST">
+            <label for="redName">Red Player: </label><br>
+            <input type="text" id="redName" name="redName"><br>
+            <label for="blueName">Blue Player: </label><br>
+            <input type="text" id="blueName" name="blueName"><br>
+            <input type="submit" value="Submit" onclick="postNames(redName.value, blueName.value)">
+        </form>
+        <script type="text/javascript">
+            function postNames(redName, blueName) {
+              fetch("/names", {
+                method: "POST",
+                body: JSON.stringify({ redName: redName, blueName: blueName }),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              })
+                .then((response) => {
+                  if (!response.ok) {
+                    throw new Error("Network not okay");
+                  }
+                })
+                .catch((error) => {
+                  console.error("Fetch error:", error);
+                });
+            }
+          </script>
+    </body>
+</html>

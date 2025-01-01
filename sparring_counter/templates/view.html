@@ -25,8 +25,8 @@
     </style>
     </head>
     <body>
-        <div class="redDiv">Red player: <br><span id="redDisplay" style="font-size:100px"></span></div>
-        <div class='blueDiv'>Blue player: <br><span id="blueDisplay" style="font-size:100px"></span></div>
+        <div class="redDiv">Red player: <span id="redName"></span><br><span id="redDisplay" style="font-size:100px"></span></div>
+        <div class='blueDiv'>Blue player: <span id="blueName"></span><br><span id="blueDisplay" style="font-size:100px"></span></div>
         <form action="{{ url_for('counterView') }}">
             <button value = "Reset" onclick="resetPoints()" style="width:100px; height:50px; margin:auto; position:absolute; bottom:10%">Reset</button>
         <script type="text/javascript">
@@ -50,7 +50,6 @@
                             fetch('/reset', {method:"POST"})
                         }
                     });
-                
                 document.getElementById("redDisplay").innerHTML = localStorage.getItem("redPoints");
                 document.getElementById("blueDisplay").innerHTML = localStorage.getItem("bluePoints");
             }
@@ -61,6 +60,14 @@
                 display();
             }
             setInterval(display, 500);
+            fetch('/names', {method:"GET"})
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById("redName").innerHTML = data.redName;
+                    document.getElementById("blueName").innerHTML = data.blueName;
+                });
         </script>
     </body> 
 </html>
