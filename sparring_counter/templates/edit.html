@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <h1>Sparring Counter</h1>
+    <title>Sparring Counter</title>
+    <style>
+      .redButton {
+        background-color: red;
+        width: 50%;
+        height: 100%;
+        font-size: 100px;
+        float: left;
+      }
+      .blueButton {
+        background-color: blue;
+        width: 50%;
+        height: 100%;
+        font-size: 100px;
+        color: white;
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="points">
+      <button
+        class="redButton"
+        id="redColor"
+        value="Red"
+        onclick="postColor(this.id)"
+      >
+        Red
+      </button>
+      <button
+        class="blueButton"
+        id="blueColor"
+        value="Blue"
+        onclick="postColor(this.id)"
+      >
+        Blue
+      </button>
+    </form>
+    <script type="text/javascript">
+      function postColor(colorSelected) {
+        fetch("/data", {
+          method: "POST",
+          body: JSON.stringify({ color: colorSelected }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network not okay");
+            }
+          })
+          .catch((error) => {
+            console.error("Fetch error:", error);
+          });
+      }
+    </script>
+  </body>
+</html>
