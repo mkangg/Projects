@@ -34,7 +34,7 @@ _in_progress_
 To Do: 
 - Implement the timer function
 
-# Snake Game in C (In Progress)
+# Snake Game in C (Complete)
 This is the classic Snake Game programmed in C. 
 
 ## General Information
