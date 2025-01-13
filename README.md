@@ -35,7 +35,7 @@ To Do:
 - Implement the timer function
 
 # Snake Game in C (In Progress)
-This is the classic Snake Game programmed in C. Please head to the `snake_game_c` branch to see the latest updates. 
+This is the classic Snake Game programmed in C. 
 
 ## General Information
 - This is a fun game that I chose to recreate in C in hopes of showing off my skills
@@ -50,12 +50,13 @@ Set up your WSL environment and download snake_game.c to a folder of your choice
 
 ## Usage
 In the terminal, type `gcc -Wall -std=c99 -g snake_game.c -o snake_game -lncurses` to compile the program. 
-To run the program, type `./snake_game`
+To run the program, type `./snake_game` <br>
+![image](https://github.com/user-attachments/assets/32ecfc54-bd49-404a-bccd-235764d04b19) <br>
+![image](https://github.com/user-attachments/assets/77319423-2d47-4971-b365-d356f4b40f8d) <br>
 
 ## Project Status
-_in_progress_
+_complete_
 
 ## Room for Improvement
 To Do: 
-- Implement the randomly generated apple
-- Test
+- Create tail
